@@ -12,9 +12,11 @@
         <link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
         <style>
-        #map {
-            width: 1097px;
-            height: 809px;
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
         }
         </style>
         <title></title>
@@ -69,7 +71,7 @@
         }
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[-8.950897707826849,114.39973239885022],[-7.96015881117298,115.74404354115008]]);
+        })
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -106,6 +108,9 @@
         }).addTo(map);
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
+            if (bounds_group.getLayers().length) {
+                map.fitBounds(bounds_group.getBounds());
+            }
         }
         function pop_PartaiUmmat_0(feature, layer) {
             layer.on({
@@ -120,11 +125,11 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Kabupaten/Kota</th>\
+                        <th scope="row">Kabupaten_Kota</th>\
                         <td class="visible-with-data" id="S_Kab_Kot">' + (feature.properties['S_Kab_Kot'] !== null ? autolinker.link(feature.properties['S_Kab_Kot'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">S_UMMAT</th>\
+                        <th scope="row">UMMAT</th>\
                         <td class="visible-with-data" id="S_UMMAT">' + (feature.properties['S_UMMAT'] !== null ? autolinker.link(feature.properties['S_UMMAT'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
@@ -239,11 +244,11 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Kabupaten/Kota</th>\
+                        <th scope="row">Kabupaten_Kota</th>\
                         <td class="visible-with-data" id="S_Kab_Kot">' + (feature.properties['S_Kab_Kot'] !== null ? autolinker.link(feature.properties['S_Kab_Kot'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">S_PPP</th>\
+                        <th scope="row">PPP</th>\
                         <td class="visible-with-data" id="S_PPP">' + (feature.properties['S_PPP'] !== null ? autolinker.link(feature.properties['S_PPP'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
@@ -358,11 +363,11 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Kabupaten/Kota</th>\
+                        <th scope="row">Kabupaten_Kota</th>\
                         <td class="visible-with-data" id="S_Kab_Kot">' + (feature.properties['S_Kab_Kot'] !== null ? autolinker.link(feature.properties['S_Kab_Kot'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">S_PERINDO</th>\
+                        <th scope="row">PERINDO</th>\
                         <td class="visible-with-data" id="S_PERINDO">' + (feature.properties['S_PERINDO'] !== null ? autolinker.link(feature.properties['S_PERINDO'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
@@ -477,11 +482,11 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Kabupaten/Kota</th>\
+                        <th scope="row">Kabupaten_Kota</th>\
                         <td class="visible-with-data" id="S_Kab_Kot">' + (feature.properties['S_Kab_Kot'] !== null ? autolinker.link(feature.properties['S_Kab_Kot'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">S_PSI</th>\
+                        <th scope="row">PSI</th>\
                         <td class="visible-with-data" id="S_PSI">' + (feature.properties['S_PSI'] !== null ? autolinker.link(feature.properties['S_PSI'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
@@ -596,11 +601,11 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Kabupaten/Kota</th>\
+                        <th scope="row">Kabupaten_Kota</th>\
                         <td class="visible-with-data" id="S_Kab_Kot">' + (feature.properties['S_Kab_Kot'] !== null ? autolinker.link(feature.properties['S_Kab_Kot'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">S_DEMOKRAT</th>\
+                        <th scope="row">DEMOKRAT</th>\
                         <td class="visible-with-data" id="S_DEMOKRAT">' + (feature.properties['S_DEMOKRAT'] !== null ? autolinker.link(feature.properties['S_DEMOKRAT'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
@@ -715,11 +720,11 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Kabupaten/Kota</th>\
+                        <th scope="row">Kabupaten_Kota</th>\
                         <td class="visible-with-data" id="S_Kab_Kot">' + (feature.properties['S_Kab_Kot'] !== null ? autolinker.link(feature.properties['S_Kab_Kot'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">S_PBB</th>\
+                        <th scope="row">PBB</th>\
                         <td class="visible-with-data" id="S_PBB">' + (feature.properties['S_PBB'] !== null ? autolinker.link(feature.properties['S_PBB'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
@@ -834,11 +839,11 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Kabupaten/Kota</th>\
+                        <th scope="row">Kabupaten_Kota</th>\
                         <td class="visible-with-data" id="S_Kab_Kot">' + (feature.properties['S_Kab_Kot'] !== null ? autolinker.link(feature.properties['S_Kab_Kot'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">S_PAN</th>\
+                        <th scope="row">PAN</th>\
                         <td class="visible-with-data" id="S_PAN">' + (feature.properties['S_PAN'] !== null ? autolinker.link(feature.properties['S_PAN'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
@@ -953,11 +958,11 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Kabupaten/Kota</th>\
+                        <th scope="row">Kabupaten_Kota</th>\
                         <td class="visible-with-data" id="S_Kab_Kot">' + (feature.properties['S_Kab_Kot'] !== null ? autolinker.link(feature.properties['S_Kab_Kot'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">S_GARUDA</th>\
+                        <th scope="row">GARUDA</th>\
                         <td class="visible-with-data" id="S_GARUDA">' + (feature.properties['S_GARUDA'] !== null ? autolinker.link(feature.properties['S_GARUDA'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
@@ -1072,11 +1077,11 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Kabupaten/Kota</th>\
+                        <th scope="row">Kabupaten_Kota</th>\
                         <td class="visible-with-data" id="S_Kab_Kot">' + (feature.properties['S_Kab_Kot'] !== null ? autolinker.link(feature.properties['S_Kab_Kot'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">S_HANURA</th>\
+                        <th scope="row">HANURA</th>\
                         <td class="visible-with-data" id="S_HANURA">' + (feature.properties['S_HANURA'] !== null ? autolinker.link(feature.properties['S_HANURA'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
@@ -1191,11 +1196,11 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Kabupaten/Kota</th>\
+                        <th scope="row">Kabupaten_Kota</th>\
                         <td class="visible-with-data" id="S_Kab_Kot">' + (feature.properties['S_Kab_Kot'] !== null ? autolinker.link(feature.properties['S_Kab_Kot'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">S_PKN</th>\
+                        <th scope="row">PKN</th>\
                         <td class="visible-with-data" id="S_PKN">' + (feature.properties['S_PKN'] !== null ? autolinker.link(feature.properties['S_PKN'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
@@ -1310,11 +1315,11 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Kabupaten/Kota</th>\
+                        <th scope="row">Kabupaten_Kota</th>\
                         <td class="visible-with-data" id="S_Kab_Kot">' + (feature.properties['S_Kab_Kot'] !== null ? autolinker.link(feature.properties['S_Kab_Kot'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">S_PKS</th>\
+                        <th scope="row">PKS</th>\
                         <td class="visible-with-data" id="S_PKS">' + (feature.properties['S_PKS'] !== null ? autolinker.link(feature.properties['S_PKS'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
@@ -1429,11 +1434,11 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Kabupaten/Kota</th>\
+                        <th scope="row">Kabupaten_Kota</th>\
                         <td class="visible-with-data" id="S_Kab_Kot">' + (feature.properties['S_Kab_Kot'] !== null ? autolinker.link(feature.properties['S_Kab_Kot'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">S_GELORA</th>\
+                        <th scope="row">GELORA</th>\
                         <td class="visible-with-data" id="S_GELORA">' + (feature.properties['S_GELORA'] !== null ? autolinker.link(feature.properties['S_GELORA'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
@@ -1561,11 +1566,11 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Kabupaten/Kota</th>\
+                        <th scope="row">Kabupaten_Kota</th>\
                         <td class="visible-with-data" id="S_Kab_Kot">' + (feature.properties['S_Kab_Kot'] !== null ? autolinker.link(feature.properties['S_Kab_Kot'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">S_BUR</th>\
+                        <th scope="row">BURUH</th>\
                         <td class="visible-with-data" id="S_BUR">' + (feature.properties['S_BUR'] !== null ? autolinker.link(feature.properties['S_BUR'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
@@ -1680,11 +1685,11 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Kabupaten/Kota</th>\
+                        <th scope="row">Kabupaten_Kota</th>\
                         <td class="visible-with-data" id="S_Kab_Kot">' + (feature.properties['S_Kab_Kot'] !== null ? autolinker.link(feature.properties['S_Kab_Kot'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">S_NASDEM</th>\
+                        <th scope="row">NASDEM</th>\
                         <td class="visible-with-data" id="S_NASDEM">' + (feature.properties['S_NASDEM'] !== null ? autolinker.link(feature.properties['S_NASDEM'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
@@ -1799,11 +1804,11 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Kabupaten/Kota</th>\
+                        <th scope="row">Kabupaten_Kota</th>\
                         <td class="visible-with-data" id="S_Kab_Kot">' + (feature.properties['S_Kab_Kot'] !== null ? autolinker.link(feature.properties['S_Kab_Kot'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">S_GOLKAR</th>\
+                        <th scope="row">GOLKAR</th>\
                         <td class="visible-with-data" id="S_GOLKAR">' + (feature.properties['S_GOLKAR'] !== null ? autolinker.link(feature.properties['S_GOLKAR'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
@@ -1918,11 +1923,11 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Kabupaten/Kota</th>\
+                        <th scope="row">Kabupaten_Kota</th>\
                         <td class="visible-with-data" id="S_Kab_Kot">' + (feature.properties['S_Kab_Kot'] !== null ? autolinker.link(feature.properties['S_Kab_Kot'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">S_PDIP</th>\
+                        <th scope="row">PDIP</th>\
                         <td class="visible-with-data" id="S_PDIP">' + (feature.properties['S_PDIP'] !== null ? autolinker.link(feature.properties['S_PDIP'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
@@ -2037,11 +2042,11 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Kabupaten/Kota</th>\
+                        <th scope="row">Kabupaten_Kota</th>\
                         <td class="visible-with-data" id="S_Kab_Kot">' + (feature.properties['S_Kab_Kot'] !== null ? autolinker.link(feature.properties['S_Kab_Kot'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">S_GERINDRA</th>\
+                        <th scope="row">GERINDRA</th>\
                         <td class="visible-with-data" id="S_GERINDRA">' + (feature.properties['S_GERINDRA'] !== null ? autolinker.link(feature.properties['S_GERINDRA'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
@@ -2156,12 +2161,12 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Kabupaten/Kota</th>\
-                        <td class="visible-with-data" id="S_Kab_Kot">' + (feature.properties['S_Kab_Kot'] !== null ? autolinker.link(feature.properties['S_Kab_Kot'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Kabupaten_Kota</th>\
+                        <td>' + (feature.properties['S_Kab_Kot'] !== null ? autolinker.link(feature.properties['S_Kab_Kot'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">PKB</th>\
-                        <td class="visible-with-data" id="S_PKB">' + (feature.properties['S_PKB'] !== null ? autolinker.link(feature.properties['S_PKB'].toLocaleString()) : '') + '</td>\
+                        <td>' + (feature.properties['S_PKB'] !== null ? autolinker.link(feature.properties['S_PKB'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -2272,6 +2277,36 @@
         .className += ' fa fa-search';
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
+        var overlaysTree = [
+            {label: 'Partai Kebangkitan Bangsa<br /><table><tr><td style="text-align: center;"><img src="legend/PartaiKebangkitanBangsa_18_131533730.png" /></td><td>1315 - 3373</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiKebangkitanBangsa_18_337354301.png" /></td><td>3373 - 5430</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiKebangkitanBangsa_18_543074882.png" /></td><td>5430 - 7488</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiKebangkitanBangsa_18_748895453.png" /></td><td>7488 - 9545</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiKebangkitanBangsa_18_9545116034.png" /></td><td>9545 - 11603</td></tr></table>', layer: layer_PartaiKebangkitanBangsa_18},
+            {label: 'Partai Gerakan Indonesia Raya<br /><table><tr><td style="text-align: center;"><img src="legend/PartaiGerakanIndonesiaRaya_17_11772222300.png" /></td><td>11772 - 22230</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiGerakanIndonesiaRaya_17_22230326871.png" /></td><td>22230 - 32687</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiGerakanIndonesiaRaya_17_32687431452.png" /></td><td>32687 - 43145</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiGerakanIndonesiaRaya_17_43145536023.png" /></td><td>43145 - 53602</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiGerakanIndonesiaRaya_17_53602640604.png" /></td><td>53602 - 64060</td></tr></table>', layer: layer_PartaiGerakanIndonesiaRaya_17},
+            {label: 'Partai Demokrasi Indonesia Perjuangan<br /><table><tr><td style="text-align: center;"><img src="legend/PartaiDemokrasiIndonesiaPerjuangan_16_53559924090.png" /></td><td>53559 - 92409</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiDemokrasiIndonesiaPerjuangan_16_924091312601.png" /></td><td>92409 - 131260</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiDemokrasiIndonesiaPerjuangan_16_1312601701102.png" /></td><td>131260 - 170110</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiDemokrasiIndonesiaPerjuangan_16_1701102089613.png" /></td><td>170110 - 208961</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiDemokrasiIndonesiaPerjuangan_16_2089612478114.png" /></td><td>208961 - 247811</td></tr></table>', layer: layer_PartaiDemokrasiIndonesiaPerjuangan_16},
+            {label: 'Partai Golongan Karya<br /><table><tr><td style="text-align: center;"><img src="legend/PartaiGolonganKarya_15_12408260810.png" /></td><td>12408 - 26081</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiGolonganKarya_15_26081397541.png" /></td><td>26081 - 39754</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiGolonganKarya_15_39754534262.png" /></td><td>39754 - 53426</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiGolonganKarya_15_53426670993.png" /></td><td>53426 - 67099</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiGolonganKarya_15_67099807724.png" /></td><td>67099 - 80772</td></tr></table>', layer: layer_PartaiGolonganKarya_15},
+            {label: 'Partai NasDem<br /><table><tr><td style="text-align: center;"><img src="legend/PartaiNasDem_14_4244137130.png" /></td><td>4244 - 13713</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiNasDem_14_13713231821.png" /></td><td>13713 - 23182</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiNasDem_14_23182326522.png" /></td><td>23182 - 32652</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiNasDem_14_32652421213.png" /></td><td>32652 - 42121</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiNasDem_14_42121515904.png" /></td><td>42121 - 51590</td></tr></table>', layer: layer_PartaiNasDem_14},
+            {label: 'Partai Buruh<br /><table><tr><td style="text-align: center;"><img src="legend/PartaiBuruh_13_6388500.png" /></td><td>638 - 850</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiBuruh_13_85010631.png" /></td><td>850 - 1063</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiBuruh_13_106312752.png" /></td><td>1063 - 1275</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiBuruh_13_127514883.png" /></td><td>1275 - 1488</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiBuruh_13_148817004.png" /></td><td>1488 - 1700</td></tr></table>', layer: layer_PartaiBuruh_13},
+            {label: "OSM", layer: layer_OSM_12},
+            {label: 'Partai Gelombang Rakyat Indonesia<br /><table><tr><td style="text-align: center;"><img src="legend/PartaiGelombangRakyatIndonesia_11_80725080.png" /></td><td>807 - 2508</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiGelombangRakyatIndonesia_11_250842101.png" /></td><td>2508 - 4210</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiGelombangRakyatIndonesia_11_421059112.png" /></td><td>4210 - 5911</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiGelombangRakyatIndonesia_11_591176133.png" /></td><td>5911 - 7613</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiGelombangRakyatIndonesia_11_761393144.png" /></td><td>7613 - 9314</td></tr></table>', layer: layer_PartaiGelombangRakyatIndonesia_11},
+            {label: 'Partai Keadilan Sejahtera<br /><table><tr><td style="text-align: center;"><img src="legend/PartaiKeadilanSejahtera_10_29417750.png" /></td><td>294 - 1775</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiKeadilanSejahtera_10_177532561.png" /></td><td>1775 - 3256</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiKeadilanSejahtera_10_325647372.png" /></td><td>3256 - 4737</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiKeadilanSejahtera_10_473762183.png" /></td><td>4737 - 6218</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiKeadilanSejahtera_10_621876994.png" /></td><td>6218 - 7699</td></tr></table>', layer: layer_PartaiKeadilanSejahtera_10},
+            {label: 'Partai Kebangkitan Nusantara<br /><table><tr><td style="text-align: center;"><img src="legend/PartaiKebangkitanNusantara_9_118218700.png" /></td><td>1182 - 1870</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiKebangkitanNusantara_9_187025581.png" /></td><td>1870 - 2558</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiKebangkitanNusantara_9_255832452.png" /></td><td>2558 - 3245</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiKebangkitanNusantara_9_324539333.png" /></td><td>3245 - 3933</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiKebangkitanNusantara_9_393346214.png" /></td><td>3933 - 4621</td></tr></table>', layer: layer_PartaiKebangkitanNusantara_9},
+            {label: 'Partai Hati Nurani Rakyat<br /><table><tr><td style="text-align: center;"><img src="legend/PartaiHatiNuraniRakyat_8_2799000.png" /></td><td>279 - 900</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiHatiNuraniRakyat_8_90015211.png" /></td><td>900 - 1521</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiHatiNuraniRakyat_8_152121432.png" /></td><td>1521 - 2143</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiHatiNuraniRakyat_8_214327643.png" /></td><td>2143 - 2764</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiHatiNuraniRakyat_8_276433854.png" /></td><td>2764 - 3385</td></tr></table>', layer: layer_PartaiHatiNuraniRakyat_8},
+            {label: 'Partai Garda Republik Indonesia<br /><table><tr><td style="text-align: center;"><img src="legend/PartaiGardaRepublikIndonesia_7_2844120.png" /></td><td>284 - 412</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiGardaRepublikIndonesia_7_4125401.png" /></td><td>412 - 540</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiGardaRepublikIndonesia_7_5406682.png" /></td><td>540 - 668</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiGardaRepublikIndonesia_7_6687963.png" /></td><td>668 - 796</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiGardaRepublikIndonesia_7_7969244.png" /></td><td>796 - 924</td></tr></table>', layer: layer_PartaiGardaRepublikIndonesia_7},
+            {label: 'Partai Amanat Nasional<br /><table><tr><td style="text-align: center;"><img src="legend/PartaiAmanatNasional_6_2395760.png" /></td><td>239 - 576</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiAmanatNasional_6_5769121.png" /></td><td>576 - 912</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiAmanatNasional_6_91212492.png" /></td><td>912 - 1249</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiAmanatNasional_6_124915853.png" /></td><td>1249 - 1585</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiAmanatNasional_6_158519224.png" /></td><td>1585 - 1922</td></tr></table>', layer: layer_PartaiAmanatNasional_6},
+            {label: 'Partai Bulan Bintang<br /><table><tr><td style="text-align: center;"><img src="legend/PartaiBulanBintang_5_631270.png" /></td><td>63 - 127</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiBulanBintang_5_1271911.png" /></td><td>127 - 191</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiBulanBintang_5_1912542.png" /></td><td>191 - 254</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiBulanBintang_5_2543183.png" /></td><td>254 - 318</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiBulanBintang_5_3183824.png" /></td><td>318 - 382</td></tr></table>', layer: layer_PartaiBulanBintang_5},
+            {label: 'Partai Demokrat<br /><table><tr><td style="text-align: center;"><img src="legend/PartaiDemokrat_4_3538117600.png" /></td><td>3538 - 11760</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiDemokrat_4_11760199831.png" /></td><td>11760 - 19983</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiDemokrat_4_19983282052.png" /></td><td>19983 - 28205</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiDemokrat_4_28205364283.png" /></td><td>28205 - 36428</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiDemokrat_4_36428446504.png" /></td><td>36428 - 44650</td></tr></table>', layer: layer_PartaiDemokrat_4},
+            {label: 'Partai Solidaritas Indonesia<br /><table><tr><td style="text-align: center;"><img src="legend/PartaiSolidaritasIndonesia_3_148358250.png" /></td><td>1483 - 5825</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiSolidaritasIndonesia_3_5825101671.png" /></td><td>5825 - 10167</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiSolidaritasIndonesia_3_10167145082.png" /></td><td>10167 - 14508</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiSolidaritasIndonesia_3_14508188503.png" /></td><td>14508 - 18850</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiSolidaritasIndonesia_3_18850231924.png" /></td><td>18850 - 23192</td></tr></table>', layer: layer_PartaiSolidaritasIndonesia_3},
+            {label: 'Partai Perindo<br /><table><tr><td style="text-align: center;"><img src="legend/PartaiPerindo_2_2548490.png" /></td><td>254 - 849</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiPerindo_2_84914431.png" /></td><td>849 - 1443</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiPerindo_2_144320382.png" /></td><td>1443 - 2038</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiPerindo_2_203826323.png" /></td><td>2038 - 2632</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiPerindo_2_263232274.png" /></td><td>2632 - 3227</td></tr></table>', layer: layer_PartaiPerindo_2},
+            {label: 'Partai Persatuan Pembangunan<br /><table><tr><td style="text-align: center;"><img src="legend/PartaiPersatuanPembangunan_1_1384320.png" /></td><td>138 - 432</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiPersatuanPembangunan_1_4327271.png" /></td><td>432 - 727</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiPersatuanPembangunan_1_72710212.png" /></td><td>727 - 1021</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiPersatuanPembangunan_1_102113163.png" /></td><td>1021 - 1316</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiPersatuanPembangunan_1_131616104.png" /></td><td>1316 - 1610</td></tr></table>', layer: layer_PartaiPersatuanPembangunan_1},
+            {label: 'Partai Ummat<br /><table><tr><td style="text-align: center;"><img src="legend/PartaiUmmat_0_801950.png" /></td><td>80 - 195</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiUmmat_0_1953091.png" /></td><td>195 - 309</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiUmmat_0_3094242.png" /></td><td>309 - 424</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiUmmat_0_4245383.png" /></td><td>424 - 538</td></tr><tr><td style="text-align: center;"><img src="legend/PartaiUmmat_0_5386534.png" /></td><td>538 - 653</td></tr></table>', layer: layer_PartaiUmmat_0},]
+        var lay = L.control.layers.tree(null, overlaysTree,{
+            //namedToggle: true,
+            //selectorBack: false,
+            //closedSymbol: '&#8862; &#x1f5c0;',
+            //openedSymbol: '&#8863; &#x1f5c1;',
+            //collapseAll: 'Collapse all',
+            //expandAll: 'Expand all',
+            collapsed: true,
+        });
+        lay.addTo(map);
         setBounds();
         </script>
     </body>
